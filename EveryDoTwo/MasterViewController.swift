@@ -79,7 +79,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     // If appropriate, configure the new managed object.
     newToDo.title = todoData.title!
     newToDo.todoDescription = todoData.todoDescription!
-
+    newToDo.isCompleted = false
     // Save the context.
     do {
         try context.save()
@@ -145,7 +145,8 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
   }
 
   func configureCell(_ cell: UITableViewCell, withToDo event: ToDo) {
-    cell.textLabel!.text = "\(event.title ?? "") - \(event.todoDescription ?? "")"
+    let isDoneString = event.isCompleted ? "☑︎" : "◻︎"
+    cell.textLabel!.text = "\(isDoneString)  \(event.title ?? "") - \(event.todoDescription ?? "")"
     //cell.detailTextLabel!.text = "\(event.priority)"
   }
 

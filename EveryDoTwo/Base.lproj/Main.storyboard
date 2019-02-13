@@ -47,14 +47,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oXQ-4N-nq1">
+                                <rect key="frame" x="145" y="231.5" width="85" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eTK-Lm-l6t">
+                                <rect key="frame" x="163" y="260.5" width="51" height="31"/>
+                                <connections>
+                                    <action selector="toggleComplete:" destination="JEX-9P-axG" eventType="valueChanged" id="Zfo-hJ-X2f"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="DFe-LN-uMT" firstAttribute="centerX" secondItem="VUw-jc-0yf" secondAttribute="centerX" id="5Me-CT-ITl"/>
+                            <constraint firstItem="0XM-y9-sOw" firstAttribute="top" secondItem="eTK-Lm-l6t" secondAttribute="bottom" constant="32" id="7h8-2O-qYt"/>
                             <constraint firstItem="DFe-LN-uMT" firstAttribute="top" secondItem="0XM-y9-sOw" secondAttribute="bottom" constant="32" id="LAN-8r-Tkf"/>
+                            <constraint firstItem="oXQ-4N-nq1" firstAttribute="centerX" secondItem="VUw-jc-0yf" secondAttribute="centerX" id="Nec-Wg-Ud1"/>
                             <constraint firstItem="VUw-jc-0yf" firstAttribute="trailing" secondItem="DFe-LN-uMT" secondAttribute="trailing" constant="16" id="QTI-vS-far"/>
                             <constraint firstItem="0XM-y9-sOw" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" constant="20" symbolic="YES" id="Tsc-yG-G1q"/>
                             <constraint firstItem="DFe-LN-uMT" firstAttribute="leading" secondItem="VUw-jc-0yf" secondAttribute="leading" constant="16" id="VqR-IT-o8C"/>
+                            <constraint firstItem="eTK-Lm-l6t" firstAttribute="centerX" secondItem="VUw-jc-0yf" secondAttribute="centerX" id="XCI-Al-StK"/>
+                            <constraint firstItem="eTK-Lm-l6t" firstAttribute="top" secondItem="oXQ-4N-nq1" secondAttribute="bottom" constant="8" id="cfB-Se-9p4"/>
                             <constraint firstItem="0XM-y9-sOw" firstAttribute="centerY" secondItem="svH-Pt-448" secondAttribute="centerY" id="jWN-iV-94e"/>
                             <constraint firstAttribute="trailing" secondItem="0XM-y9-sOw" secondAttribute="trailing" constant="20" symbolic="YES" id="tHV-ZD-HQj"/>
                         </constraints>
@@ -63,6 +79,8 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
                     <connections>
+                        <outlet property="completedLabel" destination="oXQ-4N-nq1" id="eMg-HL-rPT"/>
+                        <outlet property="completedSwitch" destination="eTK-Lm-l6t" id="YZH-Nk-KVj"/>
                         <outlet property="descriptionLabel" destination="DFe-LN-uMT" id="psE-uf-IkY"/>
                         <outlet property="detailDescriptionLabel" destination="0XM-y9-sOw" id="deQ-Na-JPF"/>
                     </connections>
