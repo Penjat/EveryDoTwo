@@ -15,10 +15,49 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     navigationItem.leftBarButtonItem = editButtonItem
 
     let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(openAlert(_:) ))
-    navigationItem.rightBarButtonItem = addButton
+    //navigationItem.rightBarButtonItem = addButton
+    
+    let themeButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(openThemesAlert(_:) ))
+    navigationItem.rightBarButtonItems = [addButton,themeButton]
+    
     if let split = splitViewController {
         let controllers = split.viewControllers
         detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
+    }
+    self.tableView.backgroundColor = UIColor.darkGray
+  }
+  @objc
+  func openThemesAlert(_ sender: Any){
+    print("opening themes")
+    //    insertNewObject(_:)
+    let alertController = UIAlertController(title: "Select Theme", message: "", preferredStyle: .alert)
+    
+    
+    let darkTheme = UIAlertAction(title: "Create", style: .default) { (_) in
+      
+      //login(loginTextField.text, passwordTextField.text)
+    }
+    
+    
+    
+    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+    
+    alertController.addTextField { (textField) in
+      textField.placeholder = UserDefaults.standard.string(forKey: "todoTitle")
+      
+      
+    }
+    
+    alertController.addTextField { (textField) in
+      textField.placeholder = UserDefaults.standard.string(forKey: "todoDescription")
+      
+    }
+    
+    alertController.addAction(darkTheme)
+    alertController.addAction(cancelAction)
+    
+    self.present(alertController, animated: true) {
+      // ...
     }
   }
   @objc
@@ -143,15 +182,18 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         }
     }
   }
-
+  func getTheme(){
+    
+  }
   func configureCell(_ cell: UITableViewCell, withToDo event: ToDo) {
     let isDoneString = event.isCompleted ? "☑︎" : "◻︎"
     cell.textLabel!.text = "\(isDoneString)  \(event.title ?? "") - \(event.todoDescription ?? "")"
     //cell.detailTextLabel!.text = "\(event.priority)"
+    cell.backgroundColor = UIColor.gray
   }
 
   // MARK: - Fetched results controller
-
+  
   var fetchedResultsController: NSFetchedResultsController<ToDo> {
       if _fetchedResultsController != nil {
           return _fetchedResultsController!
