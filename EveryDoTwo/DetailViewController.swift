@@ -29,7 +29,7 @@ class DetailViewController: UIViewController {
     updateCompletedLabel()
     
     if let detail = detailItem {
-      detail.isCompleted = true
+      detail.isCompleted = completedSwitch.isOn
     }
     
     if let appDelegate = UIApplication.shared.delegate as? AppDelegate{

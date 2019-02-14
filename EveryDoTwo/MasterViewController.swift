@@ -7,7 +7,8 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
   var detailViewController: DetailViewController? = nil
   var managedObjectContext: NSManagedObjectContext? = nil
-
+  var currentTheme = Theme.Rainbow
+  
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -24,7 +25,26 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         let controllers = split.viewControllers
         detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
     }
-    self.tableView.backgroundColor = UIColor.darkGray
+    //TODO get from user prefs
+    currentTheme = getTheme(int: UserDefaults.standard.integer(forKey: "userTheme"))
+    
+    self.tableView.backgroundColor = currentTheme.getColor(uiType: UIType.Background)
+    
+  }
+  func getTheme(int:Int) -> Theme{
+    switch (int){
+    case 0:
+      return Theme.Dark
+    case 1:
+      return Theme.Light
+    case 2:
+      return Theme.Rainbow
+    case 3:
+      return Theme.Brown
+    default :
+      return Theme.Light
+    }
+    
   }
   @objc
   func openThemesAlert(_ sender: Any){
@@ -33,28 +53,23 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     let alertController = UIAlertController(title: "Select Theme", message: "", preferredStyle: .alert)
     
     
-    let darkTheme = UIAlertAction(title: "Create", style: .default) { (_) in
-      
-      //login(loginTextField.text, passwordTextField.text)
+    let darkTheme = UIAlertAction(title: "Dark", style: .default) { (_) in
+      self.setTheme(theme: Theme.Dark)
     }
-    
-    
-    
-    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
-    
-    alertController.addTextField { (textField) in
-      textField.placeholder = UserDefaults.standard.string(forKey: "todoTitle")
-      
-      
+    let lightTheme = UIAlertAction(title: "Light", style: .default) { (_) in
+      self.setTheme(theme: Theme.Light)
     }
-    
-    alertController.addTextField { (textField) in
-      textField.placeholder = UserDefaults.standard.string(forKey: "todoDescription")
-      
+    let rainbowTheme = UIAlertAction(title: "Rainbow", style: .default) { (_) in
+      self.setTheme(theme: Theme.Rainbow)
+    }
+    let brownTheme = UIAlertAction(title: "Brown", style: .default) { (_) in
+      self.setTheme(theme: Theme.Brown)
     }
     
     alertController.addAction(darkTheme)
-    alertController.addAction(cancelAction)
+    alertController.addAction(lightTheme)
+    alertController.addAction(rainbowTheme)
+    alertController.addAction(brownTheme)
     
     self.present(alertController, animated: true) {
       // ...
@@ -109,6 +124,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
   @objc
   func insertNewObject(_ sender: (Any)) {
+    
     let todoData = sender as! (title:String! , todoDescription:String!)
     print("inserting new object \(todoData.title)")
     
@@ -182,14 +198,19 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         }
     }
   }
-  func getTheme(){
+  func setTheme(theme:Theme){
+    currentTheme = theme
     
+    self.tableView.backgroundColor = currentTheme.getColor(uiType: UIType.Background)
+    tableView.reloadData()
+    UserDefaults.standard.set(currentTheme.toInt(), forKey: "userTheme")
   }
   func configureCell(_ cell: UITableViewCell, withToDo event: ToDo) {
     let isDoneString = event.isCompleted ? "☑︎" : "◻︎"
     cell.textLabel!.text = "\(isDoneString)  \(event.title ?? "") - \(event.todoDescription ?? "")"
+    cell.textLabel?.textColor = currentTheme.getColor(uiType: UIType.Text)
     //cell.detailTextLabel!.text = "\(event.priority)"
-    cell.backgroundColor = UIColor.gray
+    cell.backgroundColor = currentTheme.getColor(uiType: UIType.Cell)
   }
 
   // MARK: - Fetched results controller

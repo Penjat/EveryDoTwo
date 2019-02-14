@@ -14,6 +14,7 @@
 		0B1FEA4A2214B5A200BDD5BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B1FEA482214B5A200BDD5BB /* Main.storyboard */; };
 		0B1FEA4C2214B5A500BDD5BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B1FEA4B2214B5A500BDD5BB /* Assets.xcassets */; };
 		0B1FEA4F2214B5A500BDD5BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B1FEA4D2214B5A500BDD5BB /* LaunchScreen.storyboard */; };
+		0B1FEA572214EF9600BDD5BB /* themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1FEA562214EF9600BDD5BB /* themes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		0B1FEA4B2214B5A500BDD5BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B1FEA4E2214B5A500BDD5BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B1FEA502214B5A500BDD5BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0B1FEA562214EF9600BDD5BB /* themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = themes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				0B1FEA3F2214B5A200BDD5BB /* AppDelegate.swift */,
 				0B1FEA442214B5A200BDD5BB /* MasterViewController.swift */,
 				0B1FEA462214B5A200BDD5BB /* DetailViewController.swift */,
+				0B1FEA562214EF9600BDD5BB /* themes.swift */,
 				0B1FEA482214B5A200BDD5BB /* Main.storyboard */,
 				0B1FEA4B2214B5A500BDD5BB /* Assets.xcassets */,
 				0B1FEA4D2214B5A500BDD5BB /* LaunchScreen.storyboard */,
@@ -145,6 +148,7 @@
 				0B1FEA432214B5A200BDD5BB /* EveryDoTwo.xcdatamodeld in Sources */,
 				0B1FEA452214B5A200BDD5BB /* MasterViewController.swift in Sources */,
 				0B1FEA472214B5A200BDD5BB /* DetailViewController.swift in Sources */,
+				0B1FEA572214EF9600BDD5BB /* themes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,8 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     let controller = masterNavigationController.topViewController as! MasterViewController
     controller.managedObjectContext = self.persistentContainer.viewContext
     
-    UserDefaults.standard.set("new todo", forKey: "todoTitle")
-    UserDefaults.standard.set("description", forKey: "todoDescription")
+    
+    
     return true
   }
 
